@@ -1,1 +1,9 @@
-<h1>Index Page</h1>
+<h1>Your Links</h1>
+
+<% @user.link.each do |link| %>
+
+  <%= link.title %>
+  <%= link.url %>
+  <%= link.votes %>
+
+<% end %>
