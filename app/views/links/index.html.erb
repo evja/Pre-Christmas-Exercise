@@ -1,9 +1,17 @@
 <h1>Your Links</h1>
 
-<% @user.link.each do |link| %>
+<%= link_to 'Back', user_links_path, class: "btn btn-info" %>
+<% @user.links.each do |link| %>
 
-  <%= link.title %>
-  <%= link.url %>
-  <%= link.votes %>
+  <div class="index">
+    <p> Title:  <%= link.title %>  URL: <%= link.url %><%= link.votes %>
+    <%= link_to 'Delete', user_link_path(@user, link), method: :delete, class: "btn btn-danger btn-xs pull-right", data: {confirm: "are you sure you want to delete this link?"} %>
+      <%= link_to 'Details', user_link_path(@user, link), class: "btn btn-success btn-xs pull-right  " %>
+      <%= link_to 'Edit', edit_user_link_path(@user, link), class: "btn btn-success btn-xs pull-right" %>
+      </p>
 
-<% end %>
+</div>
+<% end %><br/>
+<br/>
+
+<%= link_to 'Back', user_links_path(@user), class: "btn btn-info" %>

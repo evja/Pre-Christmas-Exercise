@@ -1,1 +1,29 @@
-_navbar.html.erb
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <% if current_user %>
+        <%= link_to "Log-Out", destroy_user_session_path, class: "navbar-brand" %>
+      <% else %>
+        <%= link_to "Log-In", new_user_session_path, class: "navbar-brand" %>
+      <% end %>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search for link">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+      <% if current_user %>
+        <li><%= link_to 'New Link', new_user_link_path(current_user), class: "btn2 btn-success" %></li>
+      <% end %>
+        <li><%= link_to 'Home', root_path %></li>
+        <li><%= link_to 'About', static_pages_about_path %></li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

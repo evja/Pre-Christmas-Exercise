@@ -1,10 +1,8 @@
 <%= bootstrap_form_for [@user, @link] do |f| %>
 
-  <%= f.label :title.upcase %>
   <%= f.text_field :title %>
 
-  <%= f.label :url.upcase %>
-  <%= f.text_field :url %>
+  <%= f.text_field :url, control_col: "col-sm-3" %>
 
   <%= f.submit %>
 

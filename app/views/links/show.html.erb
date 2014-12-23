@@ -1,5 +1,9 @@
 <h1><%= @link.title %></h1>
 
-  <%= link.title %>
-  <%= link.url %>
-  <%= link.votes %>
+<%= link_to 'Back', user_links_path(@user), class: "btn btn-info btn-lg" %>
+
+<div class="index">
+  <h2><%= @link.title %></h2>
+  <h4><%= @link.url %></h4>
+  <%= @link.votes %>
+</div>

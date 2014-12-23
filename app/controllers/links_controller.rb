@@ -1,7 +1,7 @@
 class LinksController < ApplicationController
   before_action :set_user
   before_action :authenticate_user!
-  before_action :set_link, only:(:show, :edit, :update, :destroy)
+  before_action :set_link, only: [:show, :edit, :update, :destroy]
 
   def index
     @links = @user.links.all
@@ -11,7 +11,7 @@ class LinksController < ApplicationController
   end
 
   def new
-    @link = @user.Link.build
+    @link = @user.links.build
   end
 
   def create
@@ -42,11 +42,11 @@ class LinksController < ApplicationController
   private
 
    def set_user
-     @user = User.find(params[:id])
+     @user = current_user
    end
 
    def set_link
-     @link = @user.links(link_id)
+     @link = Link.find(params[:id])
    end
 
    def link_params
