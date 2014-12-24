@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :links
+    get '/links/id', to: 'links#vote_up', as: :upvote
+    get '/links/id', to: 'links#vote_down', as: :downvote
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

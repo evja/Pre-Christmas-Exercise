@@ -11,7 +11,7 @@ h1 {
 .index {
     padding-right: 15px;
     max-width: 100%;
-    margin: 5px;
+    margin: 8px;
     border: solid black 2px;
     border-radius: 25px;
     background-color: cyan;
@@ -25,6 +25,14 @@ h1 {
     }
   }
 
-  /*.title {
-    margin-right: 20px;
-  }*/
+  .votes {
+    margin: 8px 0px 0px 10px;
+    padding: 10px;
+    border-radius: 50%;
+    background-color: black;
+    max-width: 33px;
+    max-height: 33px;
+    min-width: 33px;
+    min-height: 33px;
+    box-shadow: grey 0px 0px 20px 7px;
+  }

@@ -39,6 +39,18 @@ class LinksController < ApplicationController
     redirect_to user_links_path
   end
 
+   def vote_up
+    @link.votes += 1
+    @link.save
+    redirect_to links_path
+  end
+
+  def vote_down
+    @link.votes -= 1
+    @link.save
+    redirect_to links_path
+  end
+
   private
 
    def set_user
