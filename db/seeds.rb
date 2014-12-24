@@ -5,3 +5,19 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+10.times do |n|
+  email = "example-#{n+1}@railstutorial.org"
+  password = "password"
+  User.create!(email: email,
+               password:              password,
+               password_confirmation: password)
+end
+
+users = User.all
+20.times do |n|
+  title = Faker::Company.name
+  url = Faker::Internet.url
+  votes = rand(0..34)
+  users.each { |user| user.links.create!(title: title, url: url, votes: votes) }
+end

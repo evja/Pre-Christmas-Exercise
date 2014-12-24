@@ -14,14 +14,3 @@
  *= require_tree .
  *= require_self
  */
-
-
-
- $navbar-height: 80px;
- $navbar-padding: 30px;
- $navbar-border-radius: 20%;
- $btn-success-bg: #fc9;
-
- @import "bootstrap-sprockets";
- @import "bootstrap";
-

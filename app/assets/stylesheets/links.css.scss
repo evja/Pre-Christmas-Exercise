@@ -9,6 +9,8 @@ h1 {
 }
 
 .index {
+    padding-right: 15px;
+    max-width: 100%;
     margin: 5px;
     border: solid black 2px;
     border-radius: 25px;
@@ -16,7 +18,13 @@ h1 {
     box-shadow: -1px -3px 6px 1px;
 
     p {
-      padding: 10px;
+      padding: 5px;
       text-align: center;
+      font-size: 20px;
+      font-weight: bold;
     }
   }
+
+  /*.title {
+    margin-right: 20px;
+  }*/

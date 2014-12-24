@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20141222211053) do
   create_table "links", force: true do |t|
     t.string   "title"
     t.text     "url"
-    t.boolean  "votes"
+    t.integer  "votes", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
