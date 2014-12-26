@@ -1,11 +1,30 @@
 <h1 class="page-title">The Missing Link</h1>
 
-<% if !current_user %>
+<% unless current_user %>
   <div class="span7 text-center">
-    <%= link_to 'Sign Up', new_user_registration_path, class: "btn btn-info" %>
+    <%= link_to 'Sign Up', new_user_registration_path, :style => "background-color: grey;",  class: "btn btn-info" %>
   </div>
 <% else %>
   <div class="span7 text-center">
     <%= link_to 'My Links', user_links_path(current_user), class: "btn btn-warning" %>
   </div>
 <% end  %>
+
+<% @users = User.all %>
+<% @links = Link.all %>
+<h5 id="rank">Rank</h5>
+<% @users.each do |user| %>
+  <% @links.each do |link| %>
+        <% path = link.url %>
+        <div class="index">
+          <span class="badge pull-left votes"><%= link.votes %></span>
+          <!-- <p><%= "#{link.user.email}" %></p> -->
+          <p><%= link_to "#{link.title}", user_link_path(user, link), class: "title" %>
+             <%= link_to "#{link.url}", link.url, :style => "color: red;", :target => "_blank" %>
+             <%= link_to '☝︎', user_upvote_path(user, link), method: :put, class: "btn btn-success btn-xs pull-left btn-like" %>
+             <%= link_to '☟', user_downvote_path(user, link), method: :patch, class: "btn btn-danger btn-xs pull-left btn-dislinke" %>
+             <%= link_to 'Comments', user_downvote_path(user, link), class: "btn btn-default btn-xs pull-right btn-dislinke" %>
+            </p>
+      </div>
+  <% end %>
+<% end %>
