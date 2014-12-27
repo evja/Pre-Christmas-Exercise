@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'comments/index'
+
+  get 'comments/show'
+
+  get 'comments/new'
+
+  get 'comments/edit'
+
   root 'static_pages#home'
 
   get 'static_pages/about'
