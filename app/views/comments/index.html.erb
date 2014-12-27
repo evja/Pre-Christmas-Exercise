@@ -1,2 +1,15 @@
-<h1>Comments#index</h1>
-<p>Find me in app/views/comments/index.html.erb</p>
+<h1>Comments</h1>
+
+<% if @link.comments.any? %>
+  <div class="comment"><% @link.comments.each do |comment| %>
+    <%= comment.author %>
+    <%= comment.body %>
+
+    <% end %>
+  </div>
+<% else %>
+  <h2 style="text-align: center;">There are no comments for this link</h2>
+<% end %>
+
+<%= link_to 'Add Comment', new_link_comment_path(@link) %>
+<%= link_to 'Back', link_path(@link) %>

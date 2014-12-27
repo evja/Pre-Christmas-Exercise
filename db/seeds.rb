@@ -15,9 +15,12 @@
 end
 
 users = User.all
+links = Link.all
 20.times do |n|
   title = Faker::Company.name
   url = Faker::Internet.url
   votes = rand(0..34)
+  author = Faker::Name.name
+  body = Faker::Lorem.paragraph(2)
   users.each { |user| user.links.create!(title: title, url: url, votes: votes) }
 end
