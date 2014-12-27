@@ -10,20 +10,17 @@
 
   <h5 id="rank">Rank</h5>
     <% @user.links.each do |link| %>
-      <% path = link.url %>
       <div class="index">
         <span class="badge pull-left votes"><%= link.votes %></span>
         <p><%= link_to "#{link.title}", user_link_path(@user, link), class: "title" %>
            <%= link_to "#{link.url}", link.url, :style => "color: red;", :target => "_blank" %>
-        <%= link_to 'Delete', user_link_path(@user, link), method: :delete, class: "btn btn-danger btn-xs pull-right", data: {confirm: "are you sure you want to delete this link?"} %>
-          <%= link_to 'Details', user_link_path(@user, link), class: "btn btn-success btn-xs pull-right" %>
-          <%= link_to 'Edit', edit_user_link_path(@user, link), class: "btn btn-success btn-xs pull-right" %>
-          </p>
+           <%= link_to 'Delete', user_link_path(@user, link), method: :delete, class: "btn btn-danger btn-xs pull-right", data: {confirm: "are you sure you want to delete this link?"} %>
+           <%= link_to 'Details', user_link_path(@user, link), class: "btn btn-success btn-xs pull-right" %>
+           <%= link_to 'Edit', edit_user_link_path(@user, link), class: "btn btn-success btn-xs pull-right" %>
+        </p>
       </div>
     <% end %><br/>
-      <%= will_paginate @links %>
-
-    <br/>
-
-  <%= link_to 'Back', user_links_path(@user), class: "btn btn-info" %>
+   <br/>
+  <%= will_paginate @links %>
+  <%= link_to 'Back', user_links_path(current_user), class: "btn btn-info" %>
 <% end %>

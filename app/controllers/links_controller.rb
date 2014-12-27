@@ -1,12 +1,11 @@
 class LinksController < ApplicationController
-
+  before_action :authenticate_user!
 
   before_action :set_user
-  before_action :authenticate_user!, except: [:vote_up, :vote_down]
-  before_action :set_link
+  before_action :set_link, only: [:show, :update, :edit, :destroy, :vote_up, :vote_down]
 
   def index
-    @links = @user.links.all.paginate(:page => params[:page], :per_page => 10)
+    @links = @user.links.all.paginate(page: params[:page], per_page: 5)
   end
 
   def show
@@ -29,7 +28,9 @@ class LinksController < ApplicationController
   end
 
   def update
-    if @link.update_attributes(link_params)
+    if @link.update_attributes[:link][:votes]
+      redirect_to root_path
+    elsif @link.update_attributes(link_params)
       redirect_to user_link_path(@user, @link)
     else
       render :edit
@@ -66,5 +67,4 @@ class LinksController < ApplicationController
    def link_params
      params.require(:link).permit(:title, :url, :votes, :user_id)
    end
-
 end

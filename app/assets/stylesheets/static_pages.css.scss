@@ -9,8 +9,8 @@
 }
 
 #sign_up_button {
+  position: fixed;
   text-align: center;
-  position: relative;
   margin-left: auto;
   margin-right: auto;
   clear: all;
@@ -22,4 +22,21 @@
 
 #rank {
   margin-left: 20px;
+}
+
+.show-email {
+  position: relative;
+  left: 200px;
+  bottom: 20px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.notice {
+  text-align: center;
+  background-color: cyan;
+}
+
+.alert {
+  text-align: center;
 }

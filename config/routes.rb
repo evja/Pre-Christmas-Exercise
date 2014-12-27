@@ -3,12 +3,13 @@ Rails.application.routes.draw do
 
   get 'static_pages/about'
 
+  put '/links/:id', to: 'links#vote_up', as: :upvote
+  patch '/links/:id', to: 'links#vote_down', as: :downvote
+
   devise_for :users
 
   resources :users do
     resources :links
-    put '/links/:id', to: 'links#vote_up', as: :upvote
-    patch '/links/:id', to: 'links#vote_down', as: :downvote
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

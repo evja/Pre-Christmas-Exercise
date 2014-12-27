@@ -11,20 +11,21 @@
 <% end  %>
 
 <% @users = User.all %>
-<% @links = Link.all %>
+<% @links = Link.all.paginate(:page => params[:page], :per_page => 5) %>
+
 <h5 id="rank">Rank</h5>
 <% @users.each do |user| %>
   <% @links.each do |link| %>
         <% path = link.url %>
         <div class="index">
           <span class="badge pull-left votes"><%= link.votes %></span>
-          <!-- <p><%= "#{link.user.email}" %></p> -->
-          <p><%= link_to "#{link.title}", user_link_path(user, link), class: "title" %>
-             <%= link_to "#{link.url}", link.url, :style => "color: red;", :target => "_blank" %>
-             <%= link_to '☝︎', user_upvote_path(user, link), method: :put, class: "btn btn-success btn-xs pull-left btn-like" %>
-             <%= link_to '☟', user_downvote_path(user, link), method: :patch, class: "btn btn-danger btn-xs pull-left btn-dislinke" %>
-             <%= link_to 'Comments', user_downvote_path(user, link), class: "btn btn-default btn-xs pull-right btn-dislinke" %>
-            </p>
+          <p>
+           <span class="title"><%= link.title %></span>
+           <%= link_to "#{link.url}", link.url, :style => "color: red;", :target => "_blank" %>
+           <%= link_to '☝︎', upvote_path(link), method: :put, class: "btn btn-success btn-xs pull-left btn-like" %>
+           <%= link_to '☟', downvote_path(link), method: :patch, class: "btn btn-danger btn-xs pull-left btn-dislinke" %>
+           <%= link_to 'Comments', downvote_path(link), class: "btn btn-default btn-xs pull-right btn-dislinke" %>
+          </p>
       </div>
   <% end %>
 <% end %>
