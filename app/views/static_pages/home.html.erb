@@ -10,11 +10,11 @@
   </div>
 <% end  %>
 
-<% @users = User.all %>
-<% @links = Link.all.paginate(:page => params[:page], :per_page => 5) %>
+
+<% @links = Link.all.paginate(:page => params[:page], :per_page => 15) %>
 
 <h5 id="rank">Rank</h5>
-<% @users.each do |user| %>
+
   <% @links.each do |link| %>
         <% path = link.url %>
         <div class="index">
@@ -29,4 +29,5 @@
           </p>
       </div>
   <% end %>
-<% end %><%= will_paginate @links %>
+
+<%= will_paginate @links %>

@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @link.comments.build(comment_params)
-    if @comment.save notice: "Added Comment"
+    if @comment.save
       redirect_to link_comments_path(@link)
     else
       render :new
