@@ -7,9 +7,11 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 1.times do |n|
+  username = Faker::Name.first_name
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
-  User.create!(email: email,
+  User.create!(username: username,
+               email: email,
                password:              password,
                password_confirmation: password)
 end
@@ -28,6 +30,6 @@ end
   links = Link.all
   random = links.sample
   author = Faker::Name.name
-  body = Faker::Lorem.paragraph(2)
+  body = Faker::Hacker.say_something_smart
   random.comments.create!(author: author, body: body)
 end

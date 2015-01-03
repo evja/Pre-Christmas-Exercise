@@ -24,8 +24,7 @@
            <%= link_to "#{link.url}", link.url, :style => "color: red;", :target => "_blank" %>
            <%= link_to '☝︎', upvote_path(link), method: :put, class: "btn btn-success btn-xs pull-left btn-like" %>
            <%= link_to '☟', downvote_path(link), method: :patch, class: "btn btn-danger btn-xs pull-left btn-dislinke" %>
-           <span class="badge pull-right comment-count"><%= link.comments.count %></span>
-           <%= link_to 'Comments', link_comments_path(link), class: "btn btn-default btn-xs pull-right btn-dislinke" %>
+           <%= link_to "#{link.comments.count} " + "comments", link_comments_path(link), class: "btn btn-default btn-xs pull-right btn-dislinke" %>
           </p>
       </div>
   <% end %>
